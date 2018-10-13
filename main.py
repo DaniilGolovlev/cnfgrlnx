@@ -6,21 +6,26 @@
 
 Скрипты для конфигурирования серверов и рабочих станций Linux"""
 
-import platform
+from platform import dist, system
 
+def select_script():
+    """ Выбор скрипта настройки """
 
-def system_information():
-    """ Сбор основной информации о системе """
-    print("Сбор информации о системе...")
+    os_distr = dist()
 
-    os_distr = platform.dist()
-    os_arch = platform.architecture()
-
-    print("ОС:", os_distr[0], os_distr[1], "\n" + "Архитектура:", os_arch[0])
+    if os_distr == "debian":
+        import OS.cnfgr_debian
+    elif os_distr == "centos":
+        import OS.cnfgr_centos
+    elif os_distr == "fedora":
+        import OS.cnfgr_fedora
+    elif os_distr == "ubuntu":
+        import OS.cnfgr_ubuntu
 
 
 if __name__ == "__main__":
-    if platform.system() != "Linux":
+
+    if system() != "Linux":
         print("Только для Linux")
     else:
-        system_information()
+        select_script()
