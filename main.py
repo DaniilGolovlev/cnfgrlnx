@@ -7,18 +7,18 @@
 import platform
 
 
-def systemInformation():
+def system_information():
     """ Сбор основной информации о системе """
     print("Сбор информации о системе...")
 
-    OSDistr = platform.dist()
-    ArchOS = platform.architecture()
+    os_dist = platform.dist()
+    os_arch = platform.architecture()
 
-    print("ОС:", OSDistr[0], OSDistr[1], "\n" + "Архитектура:", ArchOS[0])
+    print("ОС:", os_dist[0], os_dist[1], "\n" + "Архитектура:", os_arch[0])
 
 
 if __name__ == "__main__":
     if platform.system() != "Linux":
         print("Только для Linux")
     else:
-        systemInformation()
+        system_information()
