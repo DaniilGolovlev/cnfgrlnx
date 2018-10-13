@@ -6,14 +6,16 @@
 
 Скрипты для конфигурирования серверов и рабочих станций Linux"""
 
-from platform import dist, system
+from platform import dist
 
-supported_operating_systems = ("debian", "centos")
+
+os_distr = dist()
+
+supported_operating_systems = ("debian", "centos", "ubuntu", "fedora")
+
 
 def select_script():
     """ Выбор скрипта настройки """
-
-    os_distr = dist()
 
     if os_distr[0] == "debian":
         import OS.cnfgr_debian
@@ -21,13 +23,13 @@ def select_script():
         import OS.cnfgr_centos
     elif os_distr[0] == "fedora":
         import OS.cnfgr_fedora
-    elif os_distr[0] == "ubuntu":
+    elif os_distr[0] == 'ubuntu':
         import OS.cnfgr_ubuntu
 
 
 if __name__ == "__main__":
 
-    if system() != "Linux":
-        print("Только для Linux")
+    if os_distr[0] not in supported_operating_systems:
+        print("Эта ОС или дистрибьютив не поддерживается")
     else:
         select_script()
