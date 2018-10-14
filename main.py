@@ -5,6 +5,11 @@
 Если к Вам попали эти скрипты - не вздумайте их использовать, это может привести к потере важной информации
 и/или неработоспособности системы/программ!!!!
 
+These scripts were designed for personal use. They are not intended to be used by anyone else.
+If these scripts come to you - do not try to use them, this may lead to the loss of important information
+and / or inoperability of the system / programs !!!!
+Sorry for my english =)
+
 Скрипты для конфигурирования серверов и рабочих станций Linux"""
 
 from platform import dist
@@ -29,7 +34,6 @@ def select_script():
 
 
 if __name__ == "__main__":
-
     if os_distr[0] not in supported_operating_systems:
         print("Эта ОС или дистрибьютив не поддерживается")
     else:
